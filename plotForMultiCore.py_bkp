@@ -1,0 +1,34 @@
+import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt1
+import numpy as np
+ip_delay = [2,4,8,16,32]
+[0.016491,0.016544,0.016737,0.0166333,0.016630]
+[0.01447,0.014264,0.014069,0.014303,0.014288]
+[0.01249,0.012523,0.012494,0.012675,0.01239]
+throughput50 = [0.01985,0.01993,0.02007,0.019968,0.0198002]
+throughput60 = [0.016491,0.016544,0.016737,0.0166333,0.016630]
+throughput70 = [0.01447,0.014264,0.014069,0.014303,0.014288]
+throughput80 = [0.01249,0.012523,0.012494,0.012675,0.01239]
+plt.figure(figsize=(15,10), dpi=80)
+plt.plot(ip_delay,throughput50,marker='s',linestyle='--',color='y',label='50 ms mean inter request delay time')
+plt.plot( ip_delay, throughput60,marker='o',label='60 ms mean inter request delay time')
+plt.plot(ip_delay,throughput70,marker='+',linestyle='--',color='r',label='70 ms mean inter request delay time')
+plt.plot(ip_delay,throughput80,marker='x',linestyle='-.',color='g',label='80 ms mean inter request delay time')
+
+plt.legend()
+plt.xlabel('number of threads')
+plt.ylabel('throughput(2000requests /ms)')
+plt.yticks([0,0.0125,0.015,0.0175,0.02,0.0225,0.025,0.0275])
+plt.savefig('system_load.pdf',format='pdf')
+plt.show()
+plt.close()
+no_cores = [2,4,8,16,32]
+execution_time = [121.275,120.887,119.495,120.240,146.235]
+plt1.figure(figsize=(15,10),dpi=80)
+plt1.plot(no_cores,execution_time,marker='s',label='exec time(sec)')
+plt1.legend()
+plt1.xlabel('number of threads')
+plt1.ylabel('execution time(sec)')
+plt1.savefig('degree_of_contention.pdf',format='pdf')
+plt1.show()
+plt1.close()
